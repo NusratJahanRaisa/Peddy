@@ -89,19 +89,29 @@
         <p class="font-extrabold text-2xl">Best Deal For you</p>
         <button class="btn bg-[#0E7A81] text-white">Sort by Price</button>
         </section>
+        
+
+        <!-- spinner -->
+        <section id="spinner" class="text-center mt-[200px] mb-[350px] ">
+          <span class="loading loading-spinner loading-lg"></span>
+        </section>
+
 
         <!-- pets card -->
-         <section class="w-11/12 mx-auto flex flex-row gap-4 my-14">
+         <section id="petsCard" class="hidden">
+
+         <div class="w-11/12 mx-auto flex flex-col md:flex-row gap-4 my-14">
             <!-- all pet cards -->
-            <div id="pets-card-container" class="w-3/4 border rounded-2xl h-96">
+            <div id="pets-card-container" class="w-3/4 border rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-3 min-h-screen">
 
             </div>
             
             <!-- liked pets -->
-            <div id="liked-pet-container" class="w-1/4 border rounded-2xl h-96">
+            <div id="liked-pet-container" class="w-1/4 border rounded-2xl min-h-screen">
 
             </div>
-         </section>
+         </div>
+        </section>
     </main>
  
     
