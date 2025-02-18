@@ -153,9 +153,9 @@ ${
  </button>
  </div>
 
- <div>
- <button class="btn btn-sm bg-transparent border-[#0E7A811A]">
-  <span class="text-[#0E7A81]">Adopt</span>
+ <div id="adopt-button-${onePet.petId}" onclick="adopted('adopt-button-${onePet.petId}','adopt-button-classes-${onePet.petId}','adopt-span-tag-${onePet.petId}')">
+ <button id="adopt-button-classes-${onePet.petId}" class="btn btn-sm bg-transparent border-[#0E7A811A]">
+  <span id="adopt-span-tag-${onePet.petId}" class="text-[#0E7A81]">Adopt</span>
  </button>
  </div>
 
@@ -318,3 +318,49 @@ modalContentContainer.appendChild(div)
 
 //  T A S K   7 :  PET ADOPTION FUNCTIONALITY
 
+function changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButtonSpan){
+    document.getElementById(adoptButtonClass).classList.add('bg-gray-200', 'border-[#0E7A811A]')
+
+    document.getElementById(adoptButtonSpan).classList.remove('text-[#0E7A81]')
+    document.getElementById(adoptButtonSpan).classList.add('text-gray-500')
+    document.getElementById(adoptButtonSpan).innerText='Adopted'
+
+    document.getElementById(adoptButtonClass).disabled = true
+
+}
+
+
+
+function adopted(adoptButtonId,adoptButtonClass,adoptButtonSpan){
+    let count=3;
+    
+    const intervalId = setInterval(()=>{
+
+    document.getElementById('adoption_modal').showModal();
+
+    document.getElementById('adoption-modal-content').innerHTML= `
+    <div class="flex flex-col justify-center items-center space-y-2">
+
+    <div>
+      <i class="fa-solid fa-handshake text-yellow-400 text-3xl"></i>
+    </div>
+    
+    <h1 class="text-4xl font-extrabold">Congratulations</h1>
+    <p class="text-lg font-medium">Adoption process is started for your pet</p>
+
+    <span class="text-6xl font-bold">${count}</span>
+    </div>
+    `
+    count--;
+    
+
+    if(count === -1){
+        changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButtonSpan);
+        clearInterval(intervalId)
+        document.getElementById('adoption_modal').close();
+    }
+
+    
+},1000)
+
+}
