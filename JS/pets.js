@@ -71,10 +71,13 @@ displayAndMakeCardOfAllPetsFromApi(data.pets)
 function displayAndMakeCardOfAllPetsFromApi(allPetsArray){
 
 const petsCardContainer = document.getElementById('pets-card-container')
+
+const petsCardDiv = document.getElementById('pets-card-div')
 petsCardContainer.innerHTML=``
 
 if(allPetsArray.length===0){
 document.getElementById('pets-card-container').classList.remove('grid')
+
 
 
 const div = document.createElement('div')
@@ -90,11 +93,13 @@ div.innerHTML=
 </div>
 `
 petsCardContainer.appendChild(div)
-petsCardContainer.classList.add('bg-[#13131308]','flex','justify-center','items-center','pb-[100px]')
+petsCardContainer.classList.add('mt-[150px]')
+petsCardDiv.classList.add('flex','justify-center','bg-[#13131308]')
 }
 else{
-    document.getElementById('pets-card-container').classList.add('grid') 
-    petsCardContainer.classList.remove('bg-[#13131308]','flex','justify-center','items-center','pb-[100px]')
+    petsCardContainer.classList.add('grid') 
+    petsCardContainer.classList.remove('mt-[150px]')
+    petsCardDiv.classList.remove('flex','justify-center','bg-[#13131308]')
 }
 
 
@@ -142,7 +147,7 @@ ${
 
 <div class="flex flex-row justify-between p-3">
 
- <div>
+ <div onclick="likedPets('${onePet.image}')">
  <button class="btn btn-sm bg-transparent border-[#0E7A811A]">
   <span class=""><i class="fa-regular fa-thumbs-up"></i></span>
  </button>
@@ -154,7 +159,7 @@ ${
  </button>
  </div>
 
- <div>
+ <div onclick="openModal('${onePet.petId}')">
  <button class="btn btn-sm bg-transparent border-[#0E7A811A]">
   <span class="text-[#0E7A81]">Details</span>
  </button>
@@ -178,6 +183,8 @@ petsCardContainer.appendChild(div)
 
 
 //  T A S K   3 : (SPINNER) LOAD AFTER 3 SECONDS
+
+
 function loadSpinner(){
 setTimeout(()=>{
 document.getElementById('spinner').classList.add('hidden')
@@ -213,7 +220,7 @@ function loadSpinner2(petCategoryName){
 
 
 
-//  T A S K   4 : PETS BUTTON ACTIVATION CATEGORY WISE
+//  T A S K   4 : PETS BUTTON ACTIVATION CATEGORY WISE/ CATEGORIZE PETS
 
 async function showCategoryWisePets(petName){
 
@@ -222,3 +229,92 @@ const data = await response.json()
 
 displayAndMakeCardOfAllPetsFromApi(data.data)
 }
+
+
+
+
+
+
+
+//  T A S K   5 : LIKED PETS FUNCTIONALITIES
+
+
+function likedPets(petImage){
+    const likedPetsContainer = document.getElementById('liked-pet-container')
+    console.log(petImage)
+    const div = document.createElement('div')
+    div.innerHTML=`
+    
+    <img class="h-full w-full p-2 object-cover rounded-3xl" src="${petImage}"/>
+    
+    `
+    div.classList.add('h-[100px]','border','rounded-2xl')
+    likedPetsContainer.appendChild(div)
+}
+
+
+
+
+
+//  T A S K   6 : MODAL AND MODAL CONTENT ADDING
+
+
+async function openModal(petId){
+
+const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+const data = await response.json()
+
+document.getElementById('my_modal').showModal()
+
+
+const modalContentContainer = document.getElementById('modal-content')
+modalContentContainer.innerHTML=``
+const {breed,date_of_birth,gender,price,vaccinated_status,image,pet_name,pet_details} = data.petData
+
+
+const div= document.createElement('div')
+div.classList.add('space-y-2')
+div.innerHTML=`
+<div class="h-[300px]">
+<img class="h-full w-full object-cover" src="${image}"/>
+</div>
+<h1 class="text-xl font-bold text-black">${pet_name}</h1>
+<div class="grid grid-cols-2">
+${
+    (breed=== undefined || breed==="") ? `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400  mr-2"><i class="fa-solid fa-paw"></i></span>Breed : Not Available</p>` : `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400  mr-2"><i class="fa-solid fa-paw"></i></span>Breed : ${breed}</p>`
+}
+${
+    (date_of_birth=== undefined || date_of_birth=== null || date_of_birth==="") ? `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400  mr-2"><i class="fa-solid fa-calendar-check"></i></span>Birth : Not Available</p>` : `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400  mr-2"><i class="fa-solid fa-calendar-check"></i></span>Birth : ${date_of_birth}</p>`
+}
+
+${
+    (gender=== undefined|| gender==="") ? `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400 mr-2"><i class="fa-solid fa-venus"></i></span>Gender : Not Available</p>` : `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400 mr-2"><i class="fa-solid fa-venus"></i></span>Gender : ${gender}</p>`
+}
+
+${
+    (price=== undefined || price=== null || price==="") ? ` <p class="text-base text-zinc-600 font-light"><span class="text-zinc-400 mr-2"><i class="fa-solid fa-dollar-sign"></i></span>Price : Not Available</p>`    :   `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400 mr-2"><i class="fa-solid fa-dollar-sign"></i></span> Price : ${price}$</p>`
+}
+
+${
+    (vaccinated_status=== undefined || vaccinated_status=== null || vaccinated_status==="") ? ` <p class="text-base text-zinc-600 font-light"><span class="text-zinc-400 mr-2"><i class="fa-solid fa-dollar-sign"></i></span>Price : Not Available</p>`    :   `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400 mr-2"><i class="fa-solid fa-virus"></i></span>Vaccinated status : ${vaccinated_status}</p>`
+}
+</div>
+
+<div class="border-b-2"></div>
+
+<h1 class="text-base font-bold">Details Information</h1>
+
+<p class="text-base text-zinc-600 font-light">${pet_details}</p>
+`
+modalContentContainer.appendChild(div)
+}
+
+
+
+
+
+
+
+
+//  T A S K   7 :  PET ADOPTION FUNCTIONALITY
+

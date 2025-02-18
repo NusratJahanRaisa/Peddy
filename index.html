@@ -102,16 +102,45 @@
 
          <div class="w-11/12 mx-auto flex flex-col md:flex-row gap-4 my-14">
             <!-- all pet cards -->
-            <div id="pets-card-container" class="w-3/4 border rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-3 min-h-screen">
+            <div id="pets-card-div" class="w-3/4 border rounded-2xl min-h-screen">
+                 
+
+              <div id="pets-card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-3">
+
+              </div>
+
 
             </div>
             
             <!-- liked pets -->
-            <div id="liked-pet-container" class="w-1/4 border rounded-2xl min-h-screen">
+            <div class="w-1/4 border rounded-2xl min-h-screen">
+            
 
+              <div id="liked-pet-container" class="grid grid-cols-1 md:grid-cols-2 gap-2 p-2 ">
+
+
+              </div>
+            
             </div>
          </div>
         </section>
+
+        <!-- modal of pet details -->
+         <!-- Open the modal using ID.showModal() method -->
+
+<dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="modal-content">
+
+    </div>
+
+    <div class="modal-action justify-center">
+      <form method="dialog" >
+        <button class="btn btn-wide bg-[rgb(14,122,129)] bg-opacity-10 rounded-md text-[#0E7A81] border-[#0E7A811A]">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
     </main>
  
     
