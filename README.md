@@ -1,5 +1,5 @@
 
-# Peddy (### Friend of Homeless animals)
+# Peddy - Friend of Homeless Animals
 
 
 
@@ -8,11 +8,13 @@ Peddy is a user-friendly pet adoption website designed to connect pet lovers wit
 
 # Key Features
 
-- [Wide Pet Listings](#WidePetListings)
-- Search & Filters
-- Sort by Price
-- Responsive Design 
-- User-Friendly Interface
+- ### Wide Pet Listings
+A diverse collection of pets, including dogs, cats, and other animals, with detailed profiles.
+  
+- ### Search & Filters
+- ### Sort by Price
+- ### Responsive Design 
+- ### User-Friendly Interface
 
 ## ES6 Features Used
 
