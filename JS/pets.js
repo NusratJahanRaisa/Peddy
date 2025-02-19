@@ -90,17 +90,17 @@ const loadAllPetsCategoriesFromApi = async() =>{
  <div class="text-center">
    <img class="mx-auto" src="images/error.webp" alt="">
  </div>
- <h1 class="text-2xl font-bold ">No Information Available</h1>
- <p class="text-[#44424299] w-3/4 mx-auto">Oops! It looks like this pet is not available at the moment. 😔 Don't worry, we're constantly updating our data—please check back later or try searching again!</p>
+ <h1 class="text-lg sm:text-2xl font-bold ">No Information Available</h1>
+ <p class="text-[#44424299] sm:w-3/4 mx-auto text-sm sm:text-base">Oops! It looks like this pet is not available at the moment. 😔 Don't worry, we're constantly updating our data—please check back later or try searching again!</p>
  </div>
  `
  petsCardContainer.appendChild(div)
- petsCardContainer.classList.add('mt-[150px]')
+ petsCardContainer.classList.add('md:mt-[120px]','my-[30px]')
  petsCardDiv.classList.add('flex','justify-center','bg-[#13131308]')
  }
  else{
      petsCardContainer.classList.add('grid') 
-     petsCardContainer.classList.remove('mt-[150px]')
+     petsCardContainer.classList.remove('md:mt-[120px]','my-[30px]')
      petsCardDiv.classList.remove('flex','justify-center','bg-[#13131308]')
  }
  
@@ -220,6 +220,17 @@ const loadAllPetsCategoriesFromApi = async() =>{
 
 
 
+function loadSpinner3(){
+    document.getElementById('spinner').classList.remove('hidden')
+    setTimeout(()=>{
+        document.getElementById('spinner').classList.add('hidden')    
+
+        sort()
+        },2000)  
+        
+}
+
+
 
 
 //  T A S K   4 : PETS BUTTON ACTIVATION CATEGORY WISE/ CATEGORIZE PETS
@@ -277,11 +288,11 @@ const {breed,date_of_birth,gender,price,vaccinated_status,image,pet_name,pet_det
 const div= document.createElement('div')
 div.classList.add('space-y-2')
 div.innerHTML=`
-<div class="h-[300px]">
+<div class="h-[200px] sm:h-[250px] md:h-[300px]">
 <img class="h-full w-full object-cover" src="${image}"/>
 </div>
 <h1 class="text-xl font-bold text-black">${pet_name}</h1>
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-1 sm:grid-cols-2">
 ${
     (breed=== undefined || breed==="") ? `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400  mr-2"><i class="fa-solid fa-paw"></i></span>Breed : Not Available</p>` : `<p class="text-base text-zinc-600 font-light"><span class="text-zinc-400  mr-2"><i class="fa-solid fa-paw"></i></span>Breed : ${breed}</p>`
 }
@@ -320,6 +331,7 @@ modalContentContainer.appendChild(div)
 
 //  T A S K   7 :  PET ADOPTION FUNCTIONALITY
 
+
 function changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButtonSpan){
     document.getElementById(adoptButtonClass).classList.add('bg-gray-200', 'border-[#0E7A811A]')
 
@@ -334,39 +346,36 @@ function changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButt
 
 
 function adopted(adoptButtonId,adoptButtonClass,adoptButtonSpan){
-    let count=3;
-    
-    const intervalId = setInterval(()=>{
 
-    document.getElementById('adoption_modal').showModal();
+    let count=3;
 
     document.getElementById('adoption-modal-content').innerHTML= `
-    <div class="flex flex-col justify-center items-center space-y-2">
-
-    <div>
-      <i class="fa-solid fa-handshake text-yellow-400 text-3xl"></i>
-    </div>
-    
-    <h1 class="text-4xl font-extrabold">Congratulations</h1>
-    <p class="text-lg font-medium">Adoption process is started for your pet</p>
-
     <span class="text-6xl font-bold">${count}</span>
     </div>
     `
-    count--;
-    
 
-    if(count === -1){
+
+    document.getElementById('adoption_modal').showModal();
+
+    
+   //count 3
+
+    const intervalId = setInterval(()=>{
+    count--; 
+    document.getElementById('adoption_modal').showModal();
+
+    document.getElementById('adoption-modal-content').innerHTML= `
+    <span class="text-6xl font-bold">${count}</span>
+    </div>
+    `    
+   
+    if(count === 0){
         changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButtonSpan);
         clearInterval(intervalId)
         document.getElementById('adoption_modal').close();
-    }
-
-    
-},1000)
+    }},1000)
 
 }
-
 
 
 

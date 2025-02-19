@@ -29,65 +29,78 @@
     </style>
 </head>
 
-<body class="latoFont">   
+<body class="latoFont">  
+
     <header>  
        <!--nav  -->
-      <nav class="w-11/12 mx-auto flex justify-between items-center pt-7 pb-16">  
+      <nav class="w-11/12 mx-auto flex justify-between items-center pt-4 pb-10 sm:pt-7 sm:pb-16">  
          <div class="flex items-center gap-2">
             <div class="h-5 w-6">
                 <img class="h-full w-full" src="images/logo.webp" alt="">
             </div>
             <h1 class="text-3xl font-extrabold">Peddy</h1>
          </div>
-         <div class="flex flex-row gap-6 text-[#13131399]">
+
+         <div class="hidden sm:flex flex-row gap-6 text-[#13131399]">
              <a href="">Home</a>
              <a href="">Shop</a>
              <a href="">Contact</a>
          </div>
-         <div class="border border-zinc-200 py-3 px-4 rounded-full ml-24">
+         <div class="hidden sm:block border border-zinc-200 py-3 px-4 rounded-full ml-24">
             <i class="fa-regular fa-user"></i>
+         </div>
+
+         <div class="sm:hidden">
+          <div class="dropdown dropdown-bottom dropdown-end">
+            <div tabindex="0" role="button" class="btn m-1"><i class="fa-solid fa-bars"></i></div>
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
          </div>
       </nav>
       
       <!-- banner section -->
       <section class="w-11/12 mx-auto flex flex-col justify-center items-center">
       <div class="text-center space-y-4">
-        <p class="text-[#5e535399] font-semibold text-xl">
+        <p class="text-[#5e535399] font-semibold text-sm sm:text-xl">
             Bringing Families Together ❤️‍🔥 
         </p>
-        <h1 class="text-5xl font-extrabold w-3/6 mx-auto leading-[68px]">
+        <h1 class="text-4xl sm:text-5xl font-extrabold  sm:w-3/6 mx-auto leading-[48px] sm:leading-[68px]">
             Your Path to Adoption Starts Here
         </h1>
-        <p class="text-[#44424299] w-8/12 mx-auto">
+        <p class="text-[#44424299] sm:w-8/12 mx-auto">
             Give a homeless pet a second chance at love and happiness. With countless adorable companions waiting, your perfect match is just a click away. Start your adoption journey today and make a difference in a pet’s life!
         </p>
         <div class="">
-            <a href="#main-section">
+            <a href="#adopt-your-best-friend">
                 <button class="btn bg-[#0E7A81] text-white">View  More</button>
             </a>
         </div>
       </div>
 
-      <div class="h-[500px] py-16">
+      <div class="h-[300px] sm:h-[500px] py-16">
         <img class="h-full" src="images/pet.webp" alt="">
       </div>
       </section>
       <!-- pet categories -->
-       <section class="w-11/12 mx-auto text-center space-y-4 mb-6">
-        <h1 class="text-4xl font-extrabold">Adopt  Your  Best Friend</h1>
-        <p class="text-[#44424299] w-8/12 mx-auto">Thousands of loving pets are waiting for a home like yours. Open your heart and give them the love and care they deserve. Adopt today and change a life forever!</p>
+       <section id="adopt-your-best-friend" class="w-11/12 mx-auto text-center space-y-4 mb-6">
+        <h1 class="text-3xl sm:text-4xl font-extrabold">Adopt  Your  Best Friend</h1>
+        <p class="text-[#44424299] sm:w-8/12 mx-auto">Thousands of loving pets are waiting for a home like yours. Open your heart and give them the love and care they deserve. Adopt today and change a life forever!</p>
 
-        <div id="all-pet-categories" class="flex items-center justify-between gap-12 py-7">
+        <div id="all-pet-categories" class="flex items-center justify-center sm:justify-between flex-wrap gap-12 py-7">
 
         </div>
        </section>
     </header>
 
-    <main id="main-section" class="">
+    <main>
      
         <section class="w-11/12 mx-auto flex items-center justify-between">
-        <p class="font-extrabold text-2xl">Best Deal For you</p>
-        <button onclick="sort()" class="btn bg-[#0E7A81] text-white">Sort by Price</button>
+        <p class="font-extrabold text-xl sm:text-2xl">Best Deal For you</p>
+        <button onclick="loadSpinner3()" class="btn bg-[#0E7A81] text-white">Sort by Price</button>
         </section>
         
 
@@ -102,7 +115,7 @@
 
          <div class="w-11/12 mx-auto flex flex-col md:flex-row gap-4 my-14">
             <!-- all pet cards -->
-            <div id="pets-card-div" class="w-3/4 border rounded-2xl min-h-screen">
+            <div id="pets-card-div" class="md:w-3/4 border rounded-2xl min-h-screen">
                  
 
               <div id="pets-card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-3">
@@ -113,10 +126,10 @@
             </div>
             
             <!-- liked pets -->
-            <div class="w-1/4 border rounded-2xl min-h-screen">
+            <div class="md:w-1/4 border rounded-2xl min-h-screen">
             
 
-              <div id="liked-pet-container" class="grid grid-cols-1 md:grid-cols-2 gap-2 p-2 ">
+              <div id="liked-pet-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-2 gap-2 p-2 ">
 
 
               </div>
@@ -148,7 +161,7 @@
 
 <dialog id="adoption_modal" class="modal">
   <div class="modal-box">
-    <div>
+    
       <div class="flex flex-col justify-center items-center space-y-2">
 
         <div>
@@ -156,13 +169,13 @@
         </div>
         
         <h1 class="text-4xl font-extrabold">Congratulations</h1>
-        <p class="text-lg font-medium">Adoption process is started for your pet</p>
+        <p class="text-base sm:text-lg font-light sm:font-medium">Adoption process is started for your pet</p>
 
         <div id="adoption-modal-content">
 
         </div>
     </div>
-  </div>
+  
   <form method="dialog" class="modal-backdrop">
     <button>close</button>
   </form>
@@ -214,6 +227,7 @@
             <label class="label">
               <span class="text-gray-300">Enter your email address</span>
             </label>
+            
             <div class="join">
               <input
                 type="text"
