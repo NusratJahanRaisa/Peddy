@@ -349,27 +349,26 @@ function adopted(adoptButtonId,adoptButtonClass,adoptButtonSpan){
 
     let count=3;
 
-    document.getElementById('adoption-modal-content').innerHTML= `
-    <span class="text-6xl font-bold">${count}</span>
-    </div>
-    `
+    // document.getElementById('adoption-modal-content').innerHTML= `
+    // <span class="text-6xl font-bold">${count}</span>
+    // </div>
+    // `
 
 
-    document.getElementById('adoption_modal').showModal();
+    // document.getElementById('adoption_modal').showModal();
 
     
    //count 3
 
     const intervalId = setInterval(()=>{
-    count--; 
     document.getElementById('adoption_modal').showModal();
 
     document.getElementById('adoption-modal-content').innerHTML= `
     <span class="text-6xl font-bold">${count}</span>
     </div>
     `    
-   
-    if(count === 0){
+    count--; 
+    if(count === -1){
         changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButtonSpan);
         clearInterval(intervalId)
         document.getElementById('adoption_modal').close();
