@@ -31,8 +31,8 @@ Peddy is a user-friendly pet adoption website designed to connect pet lovers wit
 - Array .sort() method
 - Event Listener
 
-## Live Website Link
+# Live Website Link
 
-[Visit Peddy](https://jahan404.github.io/Peddy/)
+### [https://jahan404.github.io/Peddy/](https://jahan404.github.io/Peddy/)
 
 
