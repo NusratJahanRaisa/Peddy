@@ -4,7 +4,7 @@ Peddy is a user-friendly pet adoption website designed to connect pet lovers wit
 
 ## Key Features
 
--[Wide Pet Listings](#Wide Pet Listings)
+- [Wide Pet Listings](#Wide Pet Listings)
 -[Search & Filters]
 -[Sort by Price]
 -[Responsive Design ]
