@@ -1,6 +1,6 @@
 
-# Peddy 
-### Friend of Homeless animals
+# Peddy (### Friend of Homeless animals)
+
 
 
 
