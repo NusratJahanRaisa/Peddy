@@ -27,9 +27,9 @@ Peddy is a user-friendly pet adoption website designed to connect pet lovers wit
 ## ES6 Features Used
 
 - [Arrow functions](#a)
-- [Destructuring]
-- [Array .sort() method]
-- [Event Listener]
+- [Destructuring](#)
+- [Array .sort() method](#)
+- [Event Listener](#)
 
 ## Switch to another file
 
