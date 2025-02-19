@@ -26,13 +26,13 @@ Peddy is a user-friendly pet adoption website designed to connect pet lovers wit
 
 ## ES6 Features Used
 
-- [Arrow functions](#a)
-- [Destructuring](#)
-- [Array .sort() method](#)
-- [Event Listener](#)
+- Arrow functions
+- Destructuring
+- Array .sort() method
+- Event Listener
 
-## Switch to another file
+## Live Website Link
 
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
+[Visit Peddy](https://jahan404.github.io/Peddy/)
 
 
