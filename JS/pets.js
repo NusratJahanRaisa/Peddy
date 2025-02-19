@@ -90,7 +90,7 @@ const loadAllPetsCategoriesFromApi = async() =>{
  <div class="text-center">
    <img class="mx-auto" src="images/error.webp" alt="">
  </div>
- <h1 class="text-lg sm:text-2xl font-bold ">No Information Available</h1>
+ <h1 class="text-2xl font-bold ">No Information Available</h1>
  <p class="text-[#44424299] sm:w-3/4 mx-auto text-sm sm:text-base">Oops! It looks like this pet is not available at the moment. 😔 Don't worry, we're constantly updating our data—please check back later or try searching again!</p>
  </div>
  `
