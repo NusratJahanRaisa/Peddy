@@ -339,7 +339,11 @@ function changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButt
     document.getElementById(adoptButtonSpan).classList.add('text-gray-500')
     document.getElementById(adoptButtonSpan).innerText='Adopted'
 
+    // document.getElementById(adoptButtonId).disabled = true
     document.getElementById(adoptButtonClass).disabled = true
+    // document.getElementById(adoptButtonSpan).disabled = true
+
+    document.getElementById(adoptButtonId).onclick = null;
 
 }
 
@@ -349,29 +353,28 @@ function adopted(adoptButtonId,adoptButtonClass,adoptButtonSpan){
 
     let count=3;
 
-    // document.getElementById('adoption-modal-content').innerHTML= `
-    // <span class="text-6xl font-bold">${count}</span>
-    // </div>
-    // `
+    document.getElementById('adoption-modal-content').innerHTML= `
+    <span class="text-6xl font-bold">${count}</span>
+    </div>
+    `
 
 
-    // document.getElementById('adoption_modal').showModal();
-
-    
-   //count 3
-
-    const intervalId = setInterval(()=>{
     document.getElementById('adoption_modal').showModal();
 
+
+    const intervalId = setInterval(()=>{
+    // document.getElementById('adoption_modal').showModal();
+    count--; 
     document.getElementById('adoption-modal-content').innerHTML= `
     <span class="text-6xl font-bold">${count}</span>
     </div>
     `    
-    count--; 
-    if(count === -1){
+   
+    if(count === 0){
         changeAdoptButtonAfterClicking(adoptButtonId,adoptButtonClass,adoptButtonSpan);
         clearInterval(intervalId)
         document.getElementById('adoption_modal').close();
+    
     }},1000)
 
 }
