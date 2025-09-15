@@ -4,7 +4,7 @@
 
 
 
-Peddy is a user-friendly pet adoption website designed to connect pet lovers with their ideal companions. It features a wide range of pets, including dogs, cats, and other animals, each with detailed descriptions, images, and pricing. The platform makes adoption easier by allowing users to browse available pets based on various criteria.
+Peddy is a user-friendly pet adoption website designed to connect pet lovers with their ideal companions. It features a wide range of pets, including dogs, cats, and other animals, each with detailed descriptions, images and pricing. The platform makes adoption easier by allowing users to browse available pets based on various criteria.
 
 # Key Features
 
